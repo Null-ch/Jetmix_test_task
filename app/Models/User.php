@@ -41,4 +41,28 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Available roles for the user.
+     *
+     * @var array
+     */
+    public static $role = [
+        '0' => 'Менеджер',
+        '1' => 'Клиент',
+    ];
+
+    /***********************************
+    * MODEL HELPERS FUNCTIONS
+    ***********************************/
+    public static function isAdmin()
+    {
+        if (auth()->check()) {
+            if (auth()->user()->role == 0) {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
 }

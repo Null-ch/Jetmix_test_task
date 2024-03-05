@@ -13,16 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/test-db-connection', function () {
-    try {
-        DB::connection()->getPdo();
-        return 'Connection to the database successful!';
-    } catch (\Exception $e) {
-        return 'Error connecting to the database: ' . $e->getMessage();
-    }
+Route::middleware('auth')->group(function () {
+    Route::get('/', [App\Http\Controllers\Client\AppealController::class, 'index'])->name('client.index');
+    Route::post('/store', [App\Http\Controllers\Client\AppealController::class, 'store'])->name('client.appeal.store');
+    
+    Route::middleware('admin')->prefix('admin')->group(function () {
+        Route::get('/', App\Http\Controllers\Admin\AppealController::class)->name('admin.index');
+    });
 });
 
 Auth::routes();
