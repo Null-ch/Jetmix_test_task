@@ -1,0 +1,63 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./:/var/www
+      - ./_docker/nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - 8076:80
+    depends_on:
+      - app
+      - db
+    container_name: jetmix_test_task
+
+  app:
+    build:
+      context: .
+      dockerfile: _docker/app/Dockerfile
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - db
+    container_name: jetmix_test_task_app
+    environment:
+      DB_CONNECTION: pgsql
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_DATABASE: jetmix_test_task
+      DB_USERNAME: jetmix-admin
+      DB_PASSWORD: root
+    ports:
+      - "9000:9000"
+    working_dir: /var/www
+
+  db:
+    image: postgres:latest
+    container_name: jetmix_test_task_db
+    restart: always
+    environment:
+      POSTGRES_DB: jetmix_test_task
+      POSTGRES_USER: jetmix-admin
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: jetmix_test_task_pgAdmin
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@jetmix.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    networks:
+      - default
+      - bridge
+
+networks:
+  default:
+  bridge:
