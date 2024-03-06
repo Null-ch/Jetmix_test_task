@@ -10,6 +10,27 @@
 <img src="https://github.com/Null-ch/Jetmix_test_task/assets/65172872/23ea1ced-20b1-4cf4-9a14-7f41537cf2d2">
 </details>
 
+## PGAdmin
+#### Для мониторинга и пользования PGAdmin необходимо:
+ - Авторизироваться по адресу: `http://localhost:5050/`
+   <br>
+   *Логин: admin@jetmix.com
+   <br>
+   *Пароль: root
+   <br>
+ - Создать новое подключение (register server) с данными из docker-compose.yml
+   <br>
+   *DB_HOST: db
+   <br>
+   *DB_PORT: 5432
+   <br>
+   *DB_DATABASE: jetmix_test_task
+   <br>
+   *DB_USERNAME: jetmix-admin
+   <br>
+   *DB_PASSWORD: root
+   <br>
+
 ## Установка
  - Клонировать репозиторий: `git clone https://github.com/Null-ch/Jetmix_test_task.git`
  - Запустить сборку и запуск контейнеров: `docker-compose up --build`
@@ -78,24 +99,3 @@ MAIL_FROM_NAME="${APP_NAME}"<br>
     <h5>Результат:</h5>
     <img src="https://github.com/Null-ch/Jetmix_test_task/assets/65172872/13d85d55-7709-4834-a397-c0c7690ca90f">
 </details>
-
-## PGAdmin
-#### Для мониторинга и пользования PGAdmin необходимо:
- - Авторизироваться по адресу: `http://localhost:5050/`
-   <br>
-   *Логин: admin@jetmix.com
-   <br>
-   *Пароль: root
-   <br>
- - Создать новое подключение (register server) с данными из docker-compose.yml
-   <br>
-   *DB_HOST: db
-   <br>
-   *DB_PORT: 5432
-   <br>
-   *DB_DATABASE: jetmix_test_task
-   <br>
-   *DB_USERNAME: jetmix-admin
-   <br>
-   *DB_PASSWORD: root
-   <br>
