@@ -27,6 +27,16 @@
 *Пароль: <b> pehExmJC4WqWDRn9 </b> <br>
 
 Почта менеджера настраивается в .env, в поле MANAGER_EMAIL. Можно настроить перед созданием пользователя через сидер.<br>
+<details>
+<summary> Интерфейс менеджера</summary>
+<img src="https://github.com/Null-ch/Jetmix_test_task/assets/65172872/809dfd9f-9391-42d6-838e-f7bfabbf635c">
+<img src="https://github.com/Null-ch/Jetmix_test_task/assets/65172872/15803f91-5bf2-444c-b378-af657f527c5b">
+</details>
+
+<details>
+<summary> Интерфейс пользователя</summary>
+<img src="https://github.com/Null-ch/Jetmix_test_task/assets/65172872/e7efbe0d-638b-4e35-84a1-705e912618fa">
+</details>
 
 В качестве почтового клиента для обработки писем использовался сервис app.debugmail.io. Для просмотра отправленных при создании обращений писем необходимо использовать свои данные debugmail<br>
 
