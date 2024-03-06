@@ -10,7 +10,7 @@ use App\Services\Client\AppealService;
 class AppealController extends Controller
 {
     /**
-     * [Description for $appealService]
+     * A service that contains the implementation of the logic of processing appeals
      *
      * @var object
      */

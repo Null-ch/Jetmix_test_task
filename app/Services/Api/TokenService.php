@@ -5,7 +5,6 @@ namespace App\Services\Api;
 use App\Models\User;
 use App\Services\LogInterface;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 
 class TokenService
 {

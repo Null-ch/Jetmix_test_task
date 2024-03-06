@@ -14,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('v1/login', App\Http\Controllers\Api\TokenController::class);
-Route::middleware('auth:api')->group(function () {
-    Route::get('v1/index', [App\Http\Controllers\Api\AppealController::class, 'index']);
-    Route::get('v1/appeal/{id}', [App\Http\Controllers\Api\AppealController::class, 'show']);
+
+Route::group(['prefix' => 'v1/'], function () {
+    Route::post('login', App\Http\Controllers\Api\TokenController::class);
+
+    Route::middleware('auth:api')->group(function () {
+        Route::resource('appeal', App\Http\Controllers\Api\AppealController::class);
+    });
 });

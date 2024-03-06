@@ -24,6 +24,4 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-Route::get('api/documentation', 'L5Swagger\Http\Controllers\SwaggerController@api');
-
 Auth::routes();

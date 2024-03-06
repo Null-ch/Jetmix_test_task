@@ -8,7 +8,7 @@ use App\Services\Admin\AppealService;
 class AppealController extends Controller
 {
     /**
-     * A service that contains the implementation of the logic of processing requests
+     * A service that contains the implementation of the logic of processing appeals
      *
      * @var object
      */
