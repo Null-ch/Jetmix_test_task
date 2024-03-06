@@ -17,6 +17,59 @@
  - Обновить зависимости: `composer update`
  - Выполнить миграции: `php artisan migrate`
  - Заполнить БД первоначальными записями (создание пользователей): `php artisan db:seed`
+
+## Web
+<h5><b>Описание</b></h5>
+В проекте используется базовая регистрация, авторизация, восстановление пароля laravel/ui.<br>
+Для после выполнения команды сидера создается учетная запись менеджера. Данные для входа следующие:<br>
+
+*Логин(email): <b> admin@jetmix.com </b> <br>
+*Пароль: <b> pehExmJC4WqWDRn9 </b> <br>
+
+Почта менеджера настраивается в .env, в поле MANAGER_EMAIL. Можно настроить перед созданием пользователя через сидер.<br>
+
+В качестве почтового клиента для обработки писем использовался сервис app.debugmail.io. Для просмотра отправленных при создании обращений писем необходимо использовать свои данные debugmail<br>
+
+MAIL_MAILER=smtp<br>
+MAIL_HOST=app.debugmail.io<br>
+MAIL_PORT=25<br>
+MAIL_USERNAME=<br>
+MAIL_PASSWORD=<br>
+MAIL_ENCRYPTION=null<br>
+MAIL_FROM_ADDRESS=john.doe@example.org<br>
+MAIL_FROM_NAME="${APP_NAME}"<br>
+
+## API
+<h5><b>Описание</b></h5>
+Перед началом работы необходимо авторизироваться от лица пользователя и создать обращения.<br>
+
+<details>
+<summary> Авторизация и получение токена </summary>
+    -Роут: `http://localhost:8076/api/v1/login`<br>
+    -Тип запроса: `POST`<br>
+    -Данные для передачи в теле: email, password<br>
+    <h5>Результат:</h5>
+    <img src="https://github.com/Null-ch/Jetmix_test_task/assets/65172872/04de488c-6a64-473f-bab7-bf25a84995c7">
+</details>
+
+<details>
+<summary> Получение всех обращений </summary>
+    -Роут: `http://localhost:8076/api/v1/appeal`<br>
+    -Тип запроса: `GET`<br>
+    <h5>Результат:</h5>
+    <img src="https://github.com/Null-ch/Jetmix_test_task/assets/65172872/88495304-d6be-4161-865e-aa38b7338f19">
+</details>
+
+<details>
+<summary> Получение обращения по id </summary>
+    -Роут: `http://localhost:8076/api/v1/appeal/{id}`<br>
+    -Тип запроса: `GET`<br>
+    -Необходимо вместо {id} передать в запрос id требуемого обращения
+    <h5>Результат:</h5>
+    <img src="https://github.com/Null-ch/Jetmix_test_task/assets/65172872/13d85d55-7709-4834-a397-c0c7690ca90f">
+</details>
+
+## PGAdmin
 #### Для мониторинга и пользования PGAdmin необходимо:
  - Авторизироваться по адресу: `http://localhost:5050/`
    <br>
