@@ -7,18 +7,41 @@ use App\Services\Admin\AppealService;
 
 class AppealController extends Controller
 {
+    /**
+     * A service that contains the implementation of the logic of processing requests
+     *
+     * @var object
+     */
     protected $appealService;
+
     public function __construct(AppealService $appealService)
     {
         $this->appealService = $appealService;
     }
+
+    /**
+     * Receiving all appeals
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * 
+     */
     public function index()
     {
-        return view('admin', compact('apeal'));
+        $appeals = $this->appealService->getAllAppeals();
+        return view('admin.index', compact('appeals'));
     }
+
+    /**
+     * Getting information about a appeal by ID
+     *
+     * @param mixed $id
+     * 
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * 
+     */
     public function show($id)
     {
-        $apeal = $this->appealService->getAppeal($id);
-        return view('admin_show', compact('apeal'));
+        $appeal = $this->appealService->getAppeal($id);
+        return view('admin.show', compact('appeal'));
     }
 }

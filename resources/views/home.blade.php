@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="col-6">
-            <form method="POST" action="{{route('client.appeal.store')}}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('client.appeal.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group text-center p-2">
                     <label for="theme">Тема</label>
@@ -43,4 +43,15 @@
             </form>
         </div>
     </div>
+@endsection
+@section('js')
+    @if (session('success') === true)
+        <script>
+            Swal.fire("Готово!", 'Обращение отправлено', "success");
+        </script>
+    @elseif(session('success') === false)
+        <script>
+            Swal.fire("Ошибка", "Что-то пошло не так", "error");
+        </script>
+    @endif
 @endsection

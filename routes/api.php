@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('v1/login', App\Http\Controllers\Api\TokenController::class);
+Route::middleware('auth:api')->group(function () {
+    Route::get('v1/index', [App\Http\Controllers\Api\AppealController::class, 'index']);
+    Route::get('v1/appeal/{id}', [App\Http\Controllers\Api\AppealController::class, 'show']);
 });

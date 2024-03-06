@@ -18,10 +18,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/store', [App\Http\Controllers\Client\AppealController::class, 'store'])->name('client.appeal.store');
     
     Route::middleware('admin')->prefix('admin')->group(function () {
-        Route::get('/', App\Http\Controllers\Admin\AppealController::class)->name('admin.index');
+        Route::get('/', [App\Http\Controllers\Admin\AppealController::class, 'index'])->name('admin.index');
+        Route::get('/show/{id}', [App\Http\Controllers\Admin\AppealController::class, 'show'])->name('admin.show');
+        Route::get('download/file/{filename}', [App\Http\Controllers\FileController::class, 'getAttachedFile'])->name('download.attached.file');
     });
 });
 
-Auth::routes();
+Route::get('api/documentation', 'L5Swagger\Http\Controllers\SwaggerController@api');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();

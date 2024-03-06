@@ -52,7 +52,7 @@ class TokenService
         if (!$user || !$this->hash::check($data['password'], $user->password)) {
             return [
                 'result' => false,
-                'token' => 'Incorrect email or password'
+                'message' => 'Неправильный логин или пароль!'
             ];
         }
 
@@ -64,7 +64,7 @@ class TokenService
                 'token' => $token
             ];
         } catch (\Exception $e) {
-            $this->logger->error('Error when getting appeal: ' . $e->getMessage());
+            $this->logger->error('Error when generate token: ' . $e->getMessage());
             return [
                 'result' => false,
                 'message' => 'Ошибка при создании токена'

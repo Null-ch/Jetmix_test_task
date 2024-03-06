@@ -57,21 +57,27 @@ class AppealService
 
     /**
      * Getting all appeal
-     *
-     * @param int $count
      * 
      * @return object
      * 
      */
-    public function getAllAppeals(int $count): ?object
+    public function getAllAppeals(): ?object
     {
+        $allAppeals = collect();
+
         try {
-            $appeals =  $this->appeal::paginate($count);
+            $chunkSize = 100;
+            $this->appeal->chunk($chunkSize, function ($appeals) use ($allAppeals) {
+                foreach ($appeals as $appeal) {
+                    $allAppeals->push($appeal);
+                }
+            });
         } catch (\Exception $e) {
             $this->logger->error('Error when getting appeals: ' . $e->getMessage());
             return null;
         }
 
-        return $appeals;
+        return $allAppeals;
     }
+
 }

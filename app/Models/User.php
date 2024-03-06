@@ -55,11 +55,13 @@ class User extends Authenticatable
     /***********************************
     * MODEL HELPERS FUNCTIONS
     ***********************************/
-    public static function isAdmin()
+    public static function isAdmin(): bool
     {
         if (auth()->check()) {
             if (auth()->user()->role == 0) {
                 return true;
+            } else {
+                return false;
             }
         } else {
             return false;

@@ -19,7 +19,7 @@ class CreateAppealsTable extends Migration
             $table->text('message');
             $table->string('name');
             $table->string('email');
-            $table->text('file');
+            $table->text('file')->nullable();
             $table->timestamps();
         });
     }

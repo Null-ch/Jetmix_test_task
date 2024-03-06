@@ -15,9 +15,10 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $email = env('MANAGER_EMAIL');
         User::create([
             'name' => 'Администратор',
-            'email' => 'admin@jetmix.ru',
+            'email' => $email,
             'role' => '0',
             'password' => Hash::make('pehExmJC4WqWDRn9'),
         ]);

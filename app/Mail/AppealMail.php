@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class AfterRegisterMail extends Mailable
+class AppealMail extends Mailable
 {
     use Queueable, SerializesModels;
     protected $appeal;
