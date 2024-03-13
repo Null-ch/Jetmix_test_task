@@ -32,7 +32,7 @@ class AppealMail extends Mailable
     {
         $subject = $this->appeal->theme;
 
-        return $this->from('info@inamr.ru')
+        return $this->from('info@jetmix.ru')
             ->subject($subject)
             ->view('email.appeal', [
                 'appeal' => $this->appeal,
